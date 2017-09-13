@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p-dataTable [value]="groups" [totalRecords]="total" [rows]="10" [paginator]="true">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="新增" id="add">
+                        </button>
+                    </div>
+                </p-header>
+                <p-column field="name" header="排班组织名称"></p-column>
+                <p-column field="isActive" header="是否启用"></p-column>
+                <p-column header="人员管理" styleClass="col-button">
+                    <ng-template let-g="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-users" [routerLink]="['user',g]"></button>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+    <p-dialog header="新增排班组织" [(visible)]="display" [width]="450">
+        <form [formGroup]="groupForm" (ngSubmit)="onSubmit()" class="form-horizontal" novalidate>
+            <div class="form-group row">
+                <div class="col-sm-8">
+                    <input pInputText type="text" class="form-control" formControlName="name" [(ngModel)]="group.name"
+                           placeholder="请输入排班组织名称"/>
+                </div>
+                <div class="col-sm-4">
+                    <div class="ui-message ui-messages-error ui-corner-all"
+                         *ngIf="!groupForm.controls['name'].valid&&groupForm.controls['name'].dirty">
+                        <i class="fa fa-close"></i>
+                        必须填写
+                    </div>
+                </div>
+            </div>
+            <button pButton type="submit" label="保存" icon="fa-save" id="save" [disabled]="!groupForm.valid"></button>
+        </form>
+    </p-dialog>
+</div>

@@ -1,0 +1,17 @@
+{
+    "total": 2,
+    "rows": [
+        {
+            "id": 1,
+            "idCard": "5770",
+            "name": "信息技术部",
+            "isActive": 1
+        },
+        {
+            "id": 2,
+            "idCard": "5680",
+            "name": "机电设备部",
+            "isActive": 0
+        }
+    ]
+}
