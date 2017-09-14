@@ -24,4 +24,16 @@ export class RolePowerService {
             .catch((error: any) => Observable.throw(error || 'Server error'));
 
     }
+
+    updatePowerToRole(roleId: number, powers: Power[]): Observable<any> {
+        const data = new URLSearchParams();
+        data.append('roleId', String(roleId));
+        data.append('powers', String(powers));
+        return this.http
+            .post(this.URL, data)
+            .map((res: Response) => {
+                return res.json();
+            })
+            .catch((error: any) => Observable.throw(error || 'Server error'));
+    }
 }

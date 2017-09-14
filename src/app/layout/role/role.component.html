@@ -3,9 +3,14 @@
         <div class="col-md-6">
             <p-dataTable [value]="roles" [totalRecords]="total" [rows]="10" [paginator]="true">
                 <p-header>
-                    <div class="ui-helper-clearfix">
-                        <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="新增" id="add">
-                        </button>
+                    <div class="ui-helper-clearfix row">
+                        <div class="col-md-4">
+                            <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="新增" id="add">
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            系统角色列表
+                        </div>
                     </div>
                 </p-header>
                 <p-column field="name" header="角色名称"></p-column>

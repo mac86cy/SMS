@@ -1,21 +1,28 @@
-<p-dataTable [value]="powers" [totalRecords]="total" [rows]="10" [paginator]="true">
+<p-dataTable [value]="powers" [totalRecords]="total" [rows]="10" [paginator]="true" [loading]="true">
     <p-header>
-        <div class="ui-helper-clearfix">
-            <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="授权" id="grant">
-            </button>
+        <div class="ui-helper-clearfix row">
+            <div class="col-md-4">
+                <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="授权" id="grant">
+                </button>
+            </div>
+            <div class="col-md-4">{{roleName}}-权限</div>
         </div>
     </p-header>
     <p-column field="name" header="权限名称"></p-column>
     <p-column field="tag" header="权限标记"></p-column>
 </p-dataTable>
 <p-dialog header="为角色授权" [(visible)]="display">
-    <p-pickList [source]="list1" [(target)]="list2" dragdrop="true">
+    <p-pickList [source]="list1" sourceHeader="待选权限" targetHeader="已选权限" [(target)]="list2" dragdrop="true">
         <ng-template let-power pTemplate="item">
             <div class="ui-helper-clearfix">
                 <div style="font-size:10px;float:right;margin:10px 5px 0 0">{{power.name}} - {{power.tag}}</div>
             </div>
         </ng-template>
     </p-pickList>
-    <button pButton type="button" icon="fa-save" (click)="getList()" label="保存">
-    </button>
+    <p-footer>
+        <div class="ui-helper-clearfix">
+            <button pButton type="button" icon="fa-save" (click)="doSubmit()" label="保存" id="save">
+            </button>
+        </div>
+    </p-footer>
 </p-dialog>

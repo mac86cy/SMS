@@ -12,6 +12,7 @@ export class RolePowerComponent implements OnInit {
     powers: Power[];
     total: number;
     roleId: number;
+    roleName: string;
     display: boolean;
     list1: Power[];
     list2: Power[];
@@ -22,6 +23,7 @@ export class RolePowerComponent implements OnInit {
         this.activeRoute.params.subscribe(params => {
             // 这里可以从路由里面获取URL参数
             this.roleId = params['id'];
+            this.roleName = params['name'];
             this.initTable();
         });
         this.list1 = [];
@@ -45,11 +47,23 @@ export class RolePowerComponent implements OnInit {
     }
 
     showDialog() {
+        // TODO 获取list1 和list2 的data
         this.display = true;
     }
 
-    getList() {
-        console.log(this.list2);
+
+    doSubmit() { // 保存权限
+        this.display = false;
+        this.rolePowerService.updatePowerToRole(this.roleId, this.list2).subscribe(
+            res => {
+                this.initTable();
+            },
+            error => {
+                console.log(error)
+            },
+            () => {
+            }
+        )
     }
 
 }
