@@ -1,3 +1,79 @@
-<p>
-  type works!
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p-dataTable [value]="types" [totalRecords]="total" [rows]="10" [paginator]="true">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="新增" id="add">
+                        </button>
+                    </div>
+                </p-header>
+                <p-column field="name" header="类型名称"></p-column>
+                <p-column field="description" header="类型描述"></p-column>
+                <p-column field="start" header="开始时间"></p-column>
+                <p-column field="end" header="结束时间"></p-column>
+                <p-column field="workHour" header="工作时长"></p-column>
+                <p-column field="isActive" header="是否启用"></p-column>
+                <p-column field="isSystem" header="是否系统类型"></p-column>
+                <p-column field="parentId" header="继承父类型"></p-column>
+                <p-column header="编辑" styleClass="col-button">
+                    <ng-template let-type="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-users" (onclick)="showEditDialog(type)"></button>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+    <p-dialog header="新增排班组织" [(visible)]="display" [width]="500" [height]="400">
+        <form [formGroup]="typeForm" (ngSubmit)="onSubmit()" class="form-horizontal" novalidate>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="name">类型名称：</label>
+                </div>
+                <div class="col-sm-7">
+                    <input pInputText type="text" class="form-control" formControlName="name" [(ngModel)]="type.name"
+                           id="name" placeholder="请输入排班类型名称" pTooltip={{formErrors.name}}/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="description">类型描述：</label>
+                </div>
+                <div class="col-sm-7">
+                    <input pInputText type="text" class="form-control" formControlName="description"
+                           [(ngModel)]="type.description" id="description" placeholder="请输入类型描述"
+                           pTooltip={{formErrors.description}}/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="start">开始时间：</label>
+                </div>
+                <div class="col-sm-7">
+                    <input pInputText type="text" class="form-control" formControlName="start" [(ngModel)]="type.start"
+                           id="start" placeholder="请输入排开始时间" pTooltip={{formErrors.start}}/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="end">结束时间：</label>
+                </div>
+                <div class="col-sm-7">
+                    <input pInputText type="text" class="form-control" formControlName="end" [(ngModel)]="type.end"
+                           id="end" placeholder="请输入结束时间" pTooltip={{formErrors.end}}/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="parentId">父类型：</label>
+                </div>
+                <div class="col-sm-7">
+                    <input pInputText type="text" class="form-control" formControlName="parentId"
+                           [(ngModel)]="type.parentId" id="parentId" placeholder="请输入父类型"
+                           pTooltip={{formErrors.parentId}}/>
+                </div>
+            </div>
+            <button pButton type="submit" label="保存" icon="fa-save" id="save" [disabled]="!typeForm.valid"></button>
+        </form>
+    </p-dialog>
+</div>
