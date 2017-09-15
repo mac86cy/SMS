@@ -23,7 +23,7 @@
             </p-dataTable>
         </div>
     </div>
-    <p-dialog header="新增排班组织" [(visible)]="display" [width]="450">
+    <p-dialog header="新增排班组织" [(visible)]="display" [width]="450" modal="modal">
         <form [formGroup]="groupForm" (ngSubmit)="onSubmit()" class="form-horizontal" novalidate>
             <div class="form-group row">
                 <div class="col-sm-3">

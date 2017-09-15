@@ -11,7 +11,7 @@
     <p-column field="name" header="权限名称"></p-column>
     <p-column field="tag" header="权限标记"></p-column>
 </p-dataTable>
-<p-dialog header="为角色授权" [(visible)]="display">
+<p-dialog header="为角色授权" [(visible)]="display" modal="modal">
     <p-pickList [source]="list1" sourceHeader="待选权限" targetHeader="已选权限" [(target)]="list2" dragdrop="true">
         <ng-template let-power pTemplate="item">
             <div class="ui-helper-clearfix">

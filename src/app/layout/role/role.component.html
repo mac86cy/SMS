@@ -26,7 +26,7 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-    <p-dialog header="新增角色" [(visible)]="display" [width]="450">
+    <p-dialog header="新增角色" [(visible)]="display" [width]="450" modal="modal">
         <form [formGroup]="roleForm" (ngSubmit)="onSubmit()" class="form-horizontal" novalidate>
             <div class="form-group row">
                 <div class="col-sm-3">
