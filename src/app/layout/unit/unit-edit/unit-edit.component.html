@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p-dataTable [value]="units" [totalRecords]="total" [rows]="10" [paginator]="true">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <button pButton type="button" icon="fa-plus" (click)="showDialog()" label="新增" id="add">
+                        </button>
+                    </div>
+                </p-header>
+                <p-column field="name" header="单元名称"></p-column>
+                <p-column field="isActive" header="是否启用">
+                    <ng-template let-t="rowData" pTemplate="body">
+                        <p-toggleButton [(ngModel)]="t.isActive" onLabel="是" offLabel="否"
+                                        (onChange)="handleChange($event)"></p-toggleButton>
+                    </ng-template>
+                </p-column>
+                <p-column header="编辑" styleClass="col-button">
+                    <ng-template let-t="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-users" (click)="showEditDialog(t)"></button>
+                    </ng-template>
+                </p-column>
+                <p-column header="管理员" styleClass="col-button">
+                    <ng-template let-t="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-users" (click)="showEditDialog(t)"></button>
+                    </ng-template>
+                </p-column>
+                <p-column header="人员" styleClass="col-button">
+                    <ng-template let-t="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-users" (click)="showEditDialog(t)"></button>
+                    </ng-template>
+                </p-column>
+            </p-dataTable>
+        </div>
+    </div>
+    <p-dialog header="新增排班单元" [(visible)]="display" [width]="480" [height]="200" modal="modal">
+        <form [formGroup]="unitForm" (ngSubmit)="onSubmit()" class="form-horizontal" novalidate>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <label for="name">单元名称：</label>
+                </div>
+                <div class="col-sm-7">
+                    <input pInputText type="text" class="form-control" formControlName="name" [(ngModel)]="unit.name"
+                           id="name" placeholder="请输入排班单元名称" pTooltip={{formErrors.name}}/>
+                </div>
+            </div>
+            <button pButton type="submit" label="保存" icon="fa-save" id="save" [disabled]="!unitForm.valid"></button>
+        </form>
+    </p-dialog>
+</div>
+
