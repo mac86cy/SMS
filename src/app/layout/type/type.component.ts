@@ -30,20 +30,15 @@ export class TypeComponent implements OnInit {
             'maxlength': '名称最多20个字符'
         },
         'description': {
-            'required': '昵称必须输入。',
-            'minlength': '昵称2到32个字符。'
+            'maxlength': '描述最多为100个字符。'
         },
         'start': {
-            'required': '邮箱必须输入。',
-            'minlength': '请输入正确的邮箱地址。'
+            'required': '开始时间必须输入。',
         },
         'end': {
-            'required': '密码必须输入。',
-            'minlength': '密码至少要8位。'
+            'required': '结束时间必须输入。',
         },
         'parentId': {
-            'required': '重复密码必须输入。',
-            'minlength': '密码至少要8位。',
         }
     };
     constructor(private fb: FormBuilder,
@@ -83,7 +78,7 @@ export class TypeComponent implements OnInit {
             'description': [
                 this.type.description,
                 [
-                    Validators.required,
+                    Validators.maxLength(100),
                 ]
             ],
             'start': [
@@ -100,9 +95,7 @@ export class TypeComponent implements OnInit {
             ],
             'parentId': [
                 this.type.parentId,
-                [
-                    Validators.required,
-                ]
+                []
             ],
         });
         this.typeForm.valueChanges.subscribe(
@@ -115,11 +108,18 @@ export class TypeComponent implements OnInit {
         this.display = true;
     }
 
-    showEditDialog(): void {
-
+    showEditDialog(type) {
+        this.typeForm.reset();
+        this.type = type;
+        this.display = true;
     }
     onSubmit() {
         this.display = false;
+        console.log(this.type.start);
         this.typeForm.reset();
+    }
+
+    handleChange(event) {
+        // TODO 是否激活
     }
 }

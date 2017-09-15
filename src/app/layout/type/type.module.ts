@@ -10,7 +10,10 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TypeService } from './type.service';
 import { FormValidService } from '../../shared/services/form-valid.service';
-import {TooltipModule} from 'primeng/primeng';
+import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
+import { ToggleButtonModule } from 'primeng/components/togglebutton/togglebutton';
 @NgModule({
     imports: [
         CommonModule,
@@ -23,6 +26,9 @@ import {TooltipModule} from 'primeng/primeng';
         FormsModule,
         ReactiveFormsModule,
         TooltipModule,
+        CalendarModule,
+        InputTextareaModule,
+        ToggleButtonModule,
     ],
     declarations: [
         TypeComponent
