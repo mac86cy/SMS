@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Role } from '../model/Role';
 import { RoleService } from './role.service';
+import { FormValidService } from '../../shared/services/form-valid.service';
 
 @Component({
     selector: 'role',
@@ -14,8 +15,23 @@ export class RoleComponent implements OnInit {
     role: Role = new Role();
     display: boolean;
     roleForm: FormGroup;
-
-    constructor(private fb: FormBuilder, private roleService: RoleService) {
+    formErrors = {
+        'name': '',
+        'description': ''
+    };
+    validationMessages = {
+        'name': {
+            'required': '名称必须输入。',
+            'minlength': '名称至少2个字符。',
+            'maxlength': '名称最多20个字符'
+        },
+        'description': {
+            'maxlength': '描述最多为100个字符。'
+        }
+    };
+    constructor(private fb: FormBuilder,
+                private roleService: RoleService,
+                private formValidService: FormValidService) {
     }
 
     ngOnInit() {
@@ -23,11 +39,28 @@ export class RoleComponent implements OnInit {
         this.buildForm();
     }
 
-    buildForm() {
+    buildForm(): void {
         this.roleForm = this.fb.group({
-            'name': new FormControl('', Validators.required),
-            'description': new FormControl('', )
-        })
+            'name': [
+                this.role.name,
+                [
+                    Validators.required,
+                    Validators.minLength(2),
+                    Validators.maxLength(20),
+                ]
+            ],
+            'description': [
+                this.role.description,
+                [
+                    Validators.maxLength(100),
+                ]
+            ],
+        });
+        this.roleForm.valueChanges.subscribe(
+            data => this.formValidService.onValueChanged(this.roleForm, this.formErrors, this.validationMessages, data)
+        );
+        this.formValidService.onValueChanged(this.roleForm, this.formErrors, this.validationMessages);
+
     }
 
     initTable() {

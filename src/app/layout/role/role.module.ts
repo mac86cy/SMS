@@ -12,6 +12,10 @@ import { RoleService } from './role.service';
 import { RolePowerComponent } from './role-power/role-power.component';
 import { RolePowerService } from './role-power/role-power.service';
 import { PickListModule } from 'primeng/components/picklist/picklist';
+import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
+import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { FormValidService } from '../../shared/services/form-valid.service';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -24,14 +28,17 @@ import { PickListModule } from 'primeng/components/picklist/picklist';
         DialogModule,
         InputTextModule,
         PickListModule,
+        InputTextareaModule,
+        TooltipModule,
     ],
     declarations: [
         RoleComponent,
-        RolePowerComponent
+        RolePowerComponent,
     ],
     providers: [
         RoleService,
         RolePowerService,
+        FormValidService,
     ]
 })
 export class RoleModule { }

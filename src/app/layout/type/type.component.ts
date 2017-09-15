@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Type } from '../model/Type';
 import { TypeService } from './type.service';
 import { FormValidService } from '../../shared/services/form-valid.service';

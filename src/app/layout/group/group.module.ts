@@ -10,6 +10,9 @@ import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 
 import { GroupService } from './group.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { FormValidService } from '../../shared/services/form-valid.service';
+import { ToggleButtonModule } from 'primeng/components/togglebutton/togglebutton';
 
 @NgModule({
     imports: [
@@ -21,13 +24,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         ReactiveFormsModule,
         ButtonModule,
         DialogModule,
-        InputTextModule
+        InputTextModule,
+        TooltipModule,
+        ToggleButtonModule,
     ],
     declarations: [
         GroupComponent,
     ],
     providers: [
-        GroupService
+        GroupService,
+        FormValidService,
     ]
 })
 export class GroupModule {
