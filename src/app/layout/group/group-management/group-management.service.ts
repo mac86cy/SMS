@@ -3,10 +3,10 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Group } from '../model/Group';
+import { Group } from '../../model/Group';
 
 @Injectable()
-export class GroupService {
+export class GroupManagementService {
 
     URL = 'assets/g.json';
 
@@ -21,4 +21,5 @@ export class GroupService {
             })
             .catch((error: any) => Observable.throw(error || 'Server error'));
     }
+
 }

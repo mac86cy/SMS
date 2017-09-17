@@ -1,0 +1,17 @@
+{
+    "total": 2,
+    "rows": [
+        {
+            "id": 1,
+            "name": "cy",
+            "idCard": "5770",
+            "mon": "w",
+            "tue": "2",
+            "wed": "ff",
+            "thu": "rr",
+            "fri": "ff",
+            "sar": "f",
+            "sun": "f"
+        }
+    ]
+}

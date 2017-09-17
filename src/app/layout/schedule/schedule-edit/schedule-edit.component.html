@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p-dataTable [value]="schedules" dataKey="id" [paginator]="true" [pageLinks]="3" [editable]="true"
+                         [rowsPerPageOptions]="[25,50,100]" [rows]="25" emptyMessage="无记录">
+                <p-headerColumnGroup>
+                    <p-row>
+                        <p-column header="姓名" rowspan="2"></p-column>
+                        <p-column [header]="h1"></p-column>
+                        <p-column [header]="h2"></p-column>
+                        <p-column [header]="h3"></p-column>
+                        <p-column [header]="h4"></p-column>
+                        <p-column [header]="h5"></p-column>
+                        <p-column [header]="h6"></p-column>
+                        <p-column [header]="h7"></p-column>
+                    </p-row>
+                    <p-row>
+                        <p-column header="星期一"></p-column>
+                        <p-column header="星期二"></p-column>
+                        <p-column header="星期三"></p-column>
+                        <p-column header="星期四"></p-column>
+                        <p-column header="星期五"></p-column>
+                        <p-column header="星期六"></p-column>
+                        <p-column header="星期日"></p-column>
+                    </p-row>
+                </p-headerColumnGroup>
+                <p-column field="name"></p-column>
+                <p-column field="mon" [editable]="true">
+                    <ng-template let-col let-s="rowData" pTemplate="editor">
+                        <p-dropdown [(ngModel)]="s[col.field]" [options]="types" [autoWidth]="false"
+                                    [style]="{'width':'100%'}" required="true" appendTo="body"></p-dropdown>
+                    </ng-template>
+                </p-column>
+                <p-column field="tue" [editable]="true"></p-column>
+                <p-column field="wed" [editable]="true"></p-column>
+                <p-column field="thu" [editable]="true"></p-column>
+                <p-column field="fri" [editable]="true"></p-column>
+                <p-column field="sar" [editable]="true"></p-column>
+                <p-column field="sun" [editable]="true"></p-column>
+            </p-dataTable>
+        </div>
+    </div>
+</div>

@@ -3,18 +3,18 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { User } from '../model/User';
+import { Schedules } from '../../model/Schedules';
 
 @Injectable()
-export class UserService {
-    USERURL = 'assets/u.json';
+export class ScheduleEditService {
+    URL = 'assets/s.json';
 
     constructor(private http: Http) {
     }
 
-    getUsers(): Observable<User[]> {
+    getSchedules(): Observable<Schedules[]> {
         return this.http
-            .get(this.USERURL, {})
+            .get(this.URL, {})
             .map((res: Response) => {
                 return res.json();
             })

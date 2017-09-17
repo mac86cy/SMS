@@ -7,7 +7,9 @@ import { DataTableModule } from 'primeng/components/datatable/datatable';
 import { UserService } from './user.service';
 import { SharedModule } from 'primeng/components/common/shared';
 import { ButtonModule } from 'primeng/components/button/button';
-import { TreeModule } from 'primeng/components/tree/tree';
+import { PickListModule } from 'primeng/components/picklist/picklist';
+import { DialogModule } from 'primeng/components/dialog/dialog';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -16,7 +18,8 @@ import { TreeModule } from 'primeng/components/tree/tree';
         DataTableModule,
         SharedModule,
         ButtonModule,
-        TreeModule
+        PickListModule,
+        DialogModule,
     ],
     declarations: [
         UserComponent,

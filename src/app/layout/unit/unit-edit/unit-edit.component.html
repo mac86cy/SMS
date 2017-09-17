@@ -16,24 +16,24 @@
                     </ng-template>
                 </p-column>
                 <p-column header="编辑" styleClass="col-button">
-                    <ng-template let-t="rowData" pTemplate="body">
-                        <button type="button" pButton icon="fa-users" (click)="showEditDialog(t)"></button>
+                    <ng-template let-u="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-edit" (click)="showEditDialog(u)"></button>
                     </ng-template>
                 </p-column>
                 <p-column header="管理员" styleClass="col-button">
-                    <ng-template let-t="rowData" pTemplate="body">
-                        <button type="button" pButton icon="fa-users" (click)="showEditDialog(t)"></button>
+                    <ng-template let-u="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-user-secret" (click)="showGrantDialog(u,'manager')"></button>
                     </ng-template>
                 </p-column>
                 <p-column header="人员" styleClass="col-button">
-                    <ng-template let-t="rowData" pTemplate="body">
-                        <button type="button" pButton icon="fa-users" (click)="showEditDialog(t)"></button>
+                    <ng-template let-u="rowData" pTemplate="body">
+                        <button type="button" pButton icon="fa-users" (click)="showGrantDialog(u,'user')"></button>
                     </ng-template>
                 </p-column>
             </p-dataTable>
         </div>
     </div>
-    <p-dialog header="新增排班单元" [(visible)]="display" [width]="480" [height]="200" modal="modal">
+    <p-dialog [header]="dialogTitle" [(visible)]="display" [width]="480" [height]="200" modal="modal">
         <form [formGroup]="unitForm" (ngSubmit)="onSubmit()" class="form-horizontal" novalidate>
             <div class="form-group row">
                 <div class="col-sm-3">
@@ -46,6 +46,21 @@
             </div>
             <button pButton type="submit" label="保存" icon="fa-save" id="save" [disabled]="!unitForm.valid"></button>
         </form>
+    </p-dialog>
+    <p-dialog [header]="dialogGrantTitle" [(visible)]="displayGrant" modal="modal">
+        <p-pickList [source]="list1" sourceHeader="待选人员" targetHeader="已选人员" [(target)]="list2" dragdrop="true">
+            <ng-template let-user pTemplate="item">
+                <div class="ui-helper-clearfix">
+                    <div style="font-size:15px;float:right;margin:5px 10px 5px 0">{{user.name}}</div>
+                </div>
+            </ng-template>
+        </p-pickList>
+        <p-footer>
+            <div class="ui-helper-clearfix">
+                <button pButton type="button" icon="fa-save" (click)="onGrant()" label="保存" id="grant">
+                </button>
+            </div>
+        </p-footer>
     </p-dialog>
 </div>
 

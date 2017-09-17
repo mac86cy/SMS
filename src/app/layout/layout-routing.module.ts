@@ -6,12 +6,12 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
-            { path: 'group/user', loadChildren: './user/user.module#UserModule' },
+            { path: 'user', loadChildren: './user/user.module#UserModule' },
             { path: 'unit', loadChildren: './unit/unit.module#UnitModule' },
             { path: 'group', loadChildren: './group/group.module#GroupModule' },
             { path: 'type', loadChildren: './type/type.module#TypeModule' },
             { path: 'role', loadChildren: './role/role.module#RoleModule' },
-            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+            { path: 'schedule', loadChildren: './schedule/schedule.module#ScheduleModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
             { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
             { path: 'forms', loadChildren: './form/form.module#FormModule' },
